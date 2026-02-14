@@ -16,7 +16,6 @@ ul li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 ul li a:hover {
@@ -25,4 +24,7 @@ ul li a:hover {
 
 .navright{
   float: right;
+}
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
