@@ -10,7 +10,7 @@ ul li {
   float: left;
 }
 
-ul li button {
+ul li a {
   display: block;
   color: white;
   text-align: center;
@@ -19,6 +19,6 @@ ul li button {
   font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
-ul li button:hover {
+ul li a:hover {
   background-color: #111111;
 }
