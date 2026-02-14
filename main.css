@@ -28,7 +28,7 @@ ul li a:hover {
 * {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-body{
+.navbar{
   margin: 0;
   padding: 0;
 }
