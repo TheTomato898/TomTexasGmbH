@@ -35,7 +35,8 @@ ul li a:hover {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 body{
-  padding: 10px 0px;
+  position: relative;
+  left: 10px;
 }
 .navbar{
   margin: 0;
