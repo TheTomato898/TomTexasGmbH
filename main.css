@@ -28,6 +28,9 @@ ul li a:hover {
 .green{
   color: rgba(116, 203, 80);
 }
+.gray{
+  color: rgba(170, 170, 170);
+}
 * {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
