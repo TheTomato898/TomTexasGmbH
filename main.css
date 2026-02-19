@@ -14,6 +14,21 @@ body {
   background-color: #ffffff;
 }
 
+html, body {
+  height: 100%; /* notwendig für Flexbox auf voller Höhe */
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column; /* Header + Main + Footer untereinander */
+  min-height: 100vh;       /* Body mindestens so hoch wie Bildschirm */
+}
+
+main {
+  flex: 1; /* füllt vertikal den freien Raum */
+}
+
 /* ===== Container ===== */
 .container {
   max-width: 1100px;
