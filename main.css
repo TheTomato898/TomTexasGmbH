@@ -1,7 +1,7 @@
 ul.navbar {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
   overflow: hidden;
   background-color: #333333;
 }
@@ -42,10 +42,9 @@ body{
   font-weight: 1,6;
 }
 .navbar{
-  margin: 0 !important;
-  padding: 0 !important;
   font-size: 18px !important;
   position: static !important;
+  left: 0px !important;
 }
 p{
   font-size: 16px;
