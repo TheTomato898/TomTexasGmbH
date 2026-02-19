@@ -6,7 +6,7 @@ ul.navbar {
   background-color: #333333;
 }
 
-ul.navbar li {
+ul.navbar li:not(.navright) {
   float: left;
 }
 
@@ -22,46 +22,47 @@ ul.navbar li a:hover {
   background-color: #111111;
 }
 
-.navright{
+.navright {
   float: right;
 }
-.green{
+.green {
   color: rgba(116, 203, 80);
 }
-.gray{
+.gray {
   color: rgba(170, 170, 170);
 }
 * {
   font-family: Inter, sans-serif;
 }
-body{
+body {
   color: #222222;
   font-size: 16px;
   font-weight: 1,6;
 }
-body:not(.navbar){
+body:not(.navbar) {
   left: 10px;
   position: relative;
 }
-.navbar{
+.navbar {
   font-size: 18px;
   position: static;
+  left: 0px !important;
 }
-p{
+p { 
   font-size: 16px;
   margin-bottom: 14;
 }
-h1{
+h1 {
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 16;
 }
-h2{
+h2 {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 16;
 }
-h3{
+h3 {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 14;
