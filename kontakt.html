@@ -30,8 +30,8 @@ window.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     set(ref(db, 'einsendungen/' + Date.now()), {
-      name: document.getElementById('Name').value + " " + 
-      vorname: document.getElementById('Vorname').value,
+      name: document.getElementById('Vorname').value + " " + 
+      document.getElementById('Name').value,
       email: document.getElementById('E-mail').value,
       nachricht: document.getElementById('Nachricht').value
     });
