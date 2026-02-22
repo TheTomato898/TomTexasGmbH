@@ -76,10 +76,8 @@ window.addEventListener("DOMContentLoaded", () => {
     try {
       await set(ref(db, 'einsendungen/' + Date.now()), {
         name: vorname + " " + nachname,
-        kontaktart: kontaktart,
         kontakt: kontakt,
         nachricht: nachricht,
-        timestamp: Date.now()
       });
 
       showToast("Nachricht erfolgreich gesendet.");
