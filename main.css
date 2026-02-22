@@ -233,3 +233,18 @@ form button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.datenschutz-hinweis {
+  font-size: 13px;
+  color: #555555;
+  margin-top: 8px;
+}
+
+.datenschutz-hinweis a {
+  color: #74cb50; /* Deine Logofarbe */
+  text-decoration: underline;
+}
+
+.datenschutz-hinweis a:hover {
+  color: #5aa63c; /* dunklere Variante beim Hover */
+}
