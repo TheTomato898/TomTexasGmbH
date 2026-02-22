@@ -24,22 +24,46 @@
   // get ref to database services
   const db = getDatabase(app);
 
-window.addEventListener("DOMContentLoaded", () => {
-
   document.getElementById('form').addEventListener('submit', (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    set(ref(db, 'einsendungen/' + Date.now()), {
-      name: document.getElementById('Vorname').value + " " + 
-      document.getElementById('Name').value,
-      email: document.getElementById('E-mail').value,
-      nachricht: document.getElementById('Nachricht').value
-    });
+  const vorname = document.getElementById('Vorname').value.trim();
+  const nachname = document.getElementById('Name').value.trim();
+  const kontakt = document.getElementById('kontakt').value.trim();
+  const nachricht = document.getElementById('Nachricht').value.trim();
+  const honeypot = document.getElementById('website')?.value;
 
-    alert('Ihre Nachricht wurde gespeichert!');
-    document.getElementById('form').reset();
+  // Honeypot Check
+  if (honeypot) {
+    return; // Bot erkannt → nichts speichern
+  }
+
+  // Regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /^\+?[0-9\s\-]{7,15}$/;
+
+  let kontaktart;
+
+  if (emailRegex.test(kontakt)) {
+    kontaktart = "email";
+  } else if (phoneRegex.test(kontakt)) {
+    kontaktart = "telefon";
+  } else {
+    alert("Bitte gültige E-Mail oder Handynummer eingeben.");
+    return;
+  }
+
+  set(ref(db, 'einsendungen/' + Date.now()), {
+    vorname: vorname,
+    nachname: nachname,
+    kontaktart: kontaktart,
+    kontakt: kontakt,
+    nachricht: nachricht,
+    timestamp: Date.now()
   });
 
+  alert("Nachricht erfolgreich gesendet.");
+  document.getElementById('form').reset();
 });
   </script>
   <title>TomTexasGmbH|Kontakt</title>
@@ -86,8 +110,14 @@ window.addEventListener("DOMContentLoaded", () => {
             <input type="text" name="Vorname" placeholder="Max" id="Vorname">
           </p>
           <p>
-            <label for="E-mail">E-mail</label>
-            <input type="text" name="E-mail" placeholder="Muster@example.com" id="E-mail">
+            <label for="kontakt">E-Mail oder Handynummer</label>
+            <input 
+              type="text" 
+              id="kontakt" 
+              placeholder="max@example.com oder +491761234567"
+              required
+            >
+            <input type="text" id="website" style="display:none">
           </p>
           <p>
             <label for="Nachricht">Nachricht an uns</label>
