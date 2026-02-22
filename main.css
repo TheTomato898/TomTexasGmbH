@@ -248,3 +248,20 @@ form button:disabled {
 .datenschutz-hinweis a:hover {
   color: #5aa63c; /* dunklere Variante beim Hover */
 }
+
+/* ===== Allgemeine Links ===== */
+a {
+  color: #74cb50;        /* Logofarbe */
+  text-decoration: none;  /* kein Unterstrich standardmäßig */
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+a:hover,
+a:focus {
+  color: #5aa63c;         /* dunklere Variante beim Hover */
+  text-decoration: underline; /* Unterstrich beim Hover */
+}
+
+a:active {
+  color: #3e7a2d;         /* noch dunkler beim Klicken */
+}
