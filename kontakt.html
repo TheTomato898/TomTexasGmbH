@@ -54,12 +54,10 @@
   }
 
   set(ref(db, 'einsendungen/' + Date.now()), {
-    vorname: vorname,
-    nachname: nachname,
+    name: vorname + " " + nachname
     kontaktart: kontaktart,
     kontakt: kontakt,
     nachricht: nachricht,
-    timestamp: Date.now()
   });
 
   alert("Nachricht erfolgreich gesendet.");
