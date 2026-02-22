@@ -49,7 +49,7 @@
   } else if (phoneRegex.test(kontakt)) {
     kontaktart = "telefon";
   } else {
-    alert("Bitte gültige E-Mail oder Handynummer eingeben.");
+    showToast("Bitte gültige E-Mail oder Handynummer eingeben.", "error");
     return;
   }
 
@@ -60,7 +60,23 @@
     nachricht: nachricht,
   });
 
-  alert("Nachricht erfolgreich gesendet.");
+  function showToast(message, type = "success") {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+
+  toast.className = "";
+  toast.classList.add("show");
+
+  if (type === "error") {
+    toast.classList.add("error");
+  }
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000);
+}
+
+  showToast("Nachricht erfolgreich gesendet.");
   document.getElementById('form').reset();
 });
   </script>
@@ -70,7 +86,7 @@
 </head>
 
 <body>
-
+<div id="toast"></div>
   <!-- HEADER -->
   <header>
     <div class="container">
