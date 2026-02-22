@@ -24,18 +24,23 @@
   // get ref to database services
   const db = getDatabase(app);
 
-  document.getElementById('submit').addEventListener('click', funktion(e){
+window.addEventListener("DOMContentLoaded", () => {
 
-    set(ref(db, 'Name/' + document.getElementById('Name').value),{
+  document.getElementById('form').addEventListener('submit', (e) => {
+    e.preventDefault();
 
-        Name: document.getElementById('Name').value,
-        Vorname: document.getElementById('Vorname').value,
-        E-mail: document.getElementById('E-mail').value
-        Nachricht: document.getElementById('Nachricht').value
-
+    set(ref(db, 'einsendungen/' + Date.now()), {
+      name: document.getElementById('Name').value,
+      vorname: document.getElementById('Vorname').value,
+      email: document.getElementById('E-mail').value,
+      nachricht: document.getElementById('Nachricht').value
     });
-    alert('Ihre Nachricht wurde gespeichert!')
-  })
+
+    alert('Ihre Nachricht wurde gespeichert!');
+    document.getElementById('form').reset();
+  });
+
+});
   </script>
   <title>TomTexasGmbH|Kontakt</title>
   <link rel="icon" type="image/x-icon" href="favicon.jpg">
