@@ -24,8 +24,12 @@
   // get ref to database services
   const db = getDatabase(app);
 
-  document.getElementById('form').addEventListener('submit', (e) => {
+document.getElementById('form').addEventListener('submit', async (e) => {
   e.preventDefault();
+
+  const button = document.querySelector("button[type='submit']");
+  button.disabled = true;
+  button.textContent = "Wird gesendet...";
 
   const vorname = document.getElementById('Vorname').value.trim();
   const nachname = document.getElementById('Name').value.trim();
@@ -33,12 +37,8 @@
   const nachricht = document.getElementById('Nachricht').value.trim();
   const honeypot = document.getElementById('website')?.value;
 
-  // Honeypot Check
-  if (honeypot) {
-    return; // Bot erkannt → nichts speichern
-  }
+  if (honeypot) return;
 
-  // Regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^\+?[0-9\s\-]{7,15}$/;
 
@@ -50,8 +50,28 @@
     kontaktart = "telefon";
   } else {
     showToast("Bitte gültige E-Mail oder Handynummer eingeben.", "error");
+    button.disabled = false;
+    button.textContent = "Senden";
     return;
   }
+
+  try {
+    await set(ref(db, 'einsendungen/' + Date.now()), {
+      name: vorname + " " + nachname,
+      kontakt: kontakt,
+      nachricht: nachricht,
+    });
+
+    showToast("Nachricht erfolgreich gesendet.");
+    document.getElementById('form').reset();
+
+  } catch (error) {
+    showToast("Fehler beim Senden. Bitte erneut versuchen.", "error");
+  }
+
+  button.disabled = false;
+  button.textContent = "Senden";
+});
 
   set(ref(db, 'einsendungen/' + Date.now()), {
     name: vorname + " " + nachname,
